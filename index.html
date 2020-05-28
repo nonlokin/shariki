@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style type="">
+		.balls{
+			position:absolute;
+			width:100px;
+			height:100px;
+			background-image:url(price.png);
+			background-size:100% 100%;
+			display:none;
+		}
+		.enemy{
+			position:absolute;
+			width:100px;
+			height:100px;
+			background-image:url(shepherd.png);
+			background-size:100% 100%;
+			display:none;
+		}
+		.win{
+			margin-left:auto;
+			margin-right:auto;
+			width:500px;
+			height:200px;
+			display:none;
+			background-image:url(win.png);
+			background-size:100% 100%;
+			margin-top:300px;
+		}
+		.lose{
+			margin-left:auto;
+			margin-right:auto;
+			width:500px;
+			height:200px;
+			display:none;
+			background-image:url(lose.png);
+			background-size:100% 100%;
+			margin-top:300px;
+		}
+	</style>
+</head>
+<body>
+<div class="win"></div>
+<div class="lose"></div>
+<div class="game col-12" style="height:900px;">
+	<h1>Очки:<span class="score"></span></h1>
+	<div class="balls" style="left:100px;top:100px;"></div>
+	<div class="balls" style="left:600px;top:220px;"></div>
+	<div class="balls" style="left:1000px;top:300px;"></div>
+	<div class="balls" style="left:1500px;top:100px;"></div>
+	<div class="balls" style="left:1700px;top:600px;"></div>
+	<div class="balls" style="left:1700px;top:300px;"></div>
+	<div class="balls" style="left:600px;top:450px;"></div>
+	<div class="balls" style="left:100px;top:700px;"></div>
+	<div class="balls" style="left:1000px;top:700px;"></div>
+	<div class="balls" style="left:400px;top:20px;"></div>
+	<div class="balls" style="left:1300px;top:20px;"></div>
+	<div class="balls" style="left:1300px;top:750px;"></div>
+
+	<div class="enemy" style="left:220px;top:90px;"></div>
+	<div class="enemy" style="left:300px;top:300px;"></div>
+	<div class="enemy" style="left:600px;top:600px;"></div>
+	<div class="enemy" style="left:1500px;top:700px;"></div>
+	<div class="enemy" style="left:1400px;top:400px;"></div>
+	<div class="enemy" style="left:1700px;top:40px;"></div>
+	<div class="enemy" style="left:250px;top:780px;"></div>
+	<div class="enemy" style="left:800px;top:50px;"></div>
+	<div class="enemy" style="left:50px;top:550px;"></div>
+	<div class="enemy" style="left:700px;top:780px;"></div>
+	<div class="enemy" style="left:1000px;top:550px;"></div>
+	<div class="enemy" style="left:800px;top:350px;"></div>
+
+</div>
+<script type="text/javascript">
+	let balls = document.querySelectorAll(".balls")
+	let enemy = document.querySelectorAll(".enemy")
+	let score = 0
+	let dead = 0
+	document.querySelector(".score").innerHTML = score
+	let start = function(){
+		alert("Игра началась")
+		balls[3].style.display = "block"
+	}
+	let time = function(){
+		alert("Время вышло! Ты не успел.")
+		document.querySelector(".game").style.display = "none"
+		document.querySelector(".lose").style.display="block"
+	}
+	for(let i=0;i<3;i=i+1){
+		enemy[i].onclick = function(){
+			alert("Ты проиграл! Ты нажал на врага!")
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".lose").style.display="block"
+		}
+	}
+	balls[0].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[0].style.display = "none"
+		balls[1].style.display = "block"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	balls[1].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[1].style.display = "none"
+		balls[2].style.display="block"
+		enemy[0].style.display="block"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	balls[2].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[2].style.display = "none"
+		balls[3].style.display="block"
+		enemy[0].style.display="none"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	balls[3].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[3].style.display = "none"
+		balls[4].style.display="block"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	balls[4].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[4].style.display = "none"
+		balls[5].style.display="block"
+		enemy[1].style.display="block"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	balls[5].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[5].style.display = "none"
+		balls[6].style.display="block"
+		enemy[1].style.display="none"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	balls[6].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[6].style.display = "none"
+		balls[7].style.display="block"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	balls[7].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[7].style.display = "none"
+		balls[8].style.display="block"
+		enemy[2].style.display="block"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	balls[8].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[8].style.display = "none"
+		balls[9].style.display="block"
+		enemy[2].style.display="none"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	balls[9].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[9].style.display = "none"
+		balls[10].style.display="block"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	balls[10].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[10].style.display = "none"
+		balls[11].style.display="block"
+		enemy[3].style.display="block"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	balls[11].onclick = function(){
+		score=score+1
+		document.querySelector(".score").innerHTML = score
+		balls[11].style.display = "none"
+		balls[0].style.display="block"
+		enemy[3].style.display="none"
+		if(score==25){
+			document.querySelector(".game").style.display="none"
+			document.querySelector(".win").style.display="block"
+		}
+	}
+	setTimeout(start,1000)
+	setTimeout(time,15000)
+</script>
+</body>
+</html>
